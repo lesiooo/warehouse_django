@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %} Create Finished Product {% endblock %}
+
+{% block content %}
+
+<h1>Fill form to create Finished Product</h1>
+
+<form action="." method="post">
+    {{ create_item_form.as_p }}
+    {% csrf_token %}
+    <p><input class="btn btn-primary" type="submit" value="Create"></p>
+</form>
+{% endblock %}

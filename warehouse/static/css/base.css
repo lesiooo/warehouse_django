@@ -1,0 +1,22 @@
+body
+{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+h1
+{
+    border-bottom:1px solid #bbb;
+}
+
+input[type=submit]
+{
+        font-size: 14px;
+}
+
+.form-control
+{
+    height: 50px;
+    width: 600px;
+    font-size: 18px;
+}
