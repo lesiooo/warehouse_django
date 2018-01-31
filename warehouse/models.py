@@ -6,7 +6,7 @@ class Category(models.Model):
 
 
 class SemiFinishedItem(models.Model):
-    name = models.TextField(max_length=255)
+    name = models.CharField(max_length=255)
     quantity = models.PositiveIntegerField(default=0)
     category = models.ForeignKey(Category)
     producer = models.CharField(max_length=50)
@@ -17,3 +17,4 @@ class FinishedProduct(models.Model):
     name = models.CharField(max_length=255)
     price = models.FloatField()
     quantity = models.PositiveIntegerField(default=0)
+    EAN_code = models.CharField(max_length=13, default=0)

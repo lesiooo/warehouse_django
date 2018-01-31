@@ -35,5 +35,5 @@ class CreateFinishedProduct(forms.ModelForm):
 
     class Meta:
         model = FinishedProduct
-        fields = ('name', 'price')
+        fields = ('name', 'price', 'EAN_code')
         exclude = ('quantity',)
