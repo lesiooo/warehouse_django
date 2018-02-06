@@ -4,4 +4,7 @@
 
 {% block content %}
 <h1> Hello in home page</h1>
+    {% for item in semi_finished_items %}
+    {{ item.name }} {{ item.slug }} {{ item.quantity }} {{ item.get_absolute_url }} {{ item.get_edit_url }} <br>
+    {% endfor %}
 {% endblock %}

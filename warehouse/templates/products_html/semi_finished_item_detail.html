@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}
+Semi-finished Item detail
+{% endblock %}
+
+{% block content %}
+    <h1> Item Details</h1>
+    {{ item.name }} <br>
+    {{ item.quantity }} <br>
+    {{ item.producer }} <br>
+    {{ item.get_edit_url}}<br>
+{%  endblock %}

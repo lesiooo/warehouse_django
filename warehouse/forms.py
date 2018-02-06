@@ -23,6 +23,20 @@ class CreateSemiFinishedItemForm(forms.ModelForm):
         exclude = ('quantity',)
 
 
+class SemiFinishedItemEditForm(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super(SemiFinishedItemEditForm, self).__init__(*args, **kwargs)
+        for field in iter(self.fields):
+            self.fields[field].widget.attrs.update({
+                'class': 'form-control'
+            })
+
+    class Meta:
+        model = SemiFinishedItem
+        fields = ('producer', 'price', 'quantity')
+        exclude = ('name', 'category')
+
 
 class CreateFinishedProduct(forms.ModelForm):
 
@@ -37,3 +51,17 @@ class CreateFinishedProduct(forms.ModelForm):
         model = FinishedProduct
         fields = ('name', 'price', 'EAN_code')
         exclude = ('quantity',)
+
+
+class FinishedProductEditForm(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super(FinishedProductEditForm, self).__init__(*args, **kwargs)
+        for field in iter(self.fields):
+            self.fields[field].widget.attrs.update({
+                'class': 'form-control'
+            })
+
+    class Meta:
+        model = FinishedProduct
+        fields = ('price', 'quantity', 'EAN_code')

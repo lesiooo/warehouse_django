@@ -9,6 +9,11 @@ h1
     border-bottom:1px solid #bbb;
 }
 
+h2
+{
+    border-bottom: 1px solid #bbb;
+}
+
 input[type=submit]
 {
         font-size: 14px;
