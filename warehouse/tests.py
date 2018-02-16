@@ -7,9 +7,10 @@ from django.test import Client
 from django.test import TestCase
 from .models import SemiFinishedItem, FinishedProduct, Category
 from .forms import *
-from .views import create_semi_finished_item_view, create_finished_product_view, home_page, semi_finished_item_edit_view, finished_product_edit_view
+from .views import *
 from django.contrib.auth.models import User
 from django.contrib.auth import login
+from .filters import SemiFinishedItemFilter
 
 class ModelClassTest(TestCase):
 
@@ -178,3 +179,25 @@ class ModelClassTest(TestCase):
 
         self.assertEqual(FinishedProduct.objects.first().price, 123)
         self.assertEqual(FinishedProduct.objects.first().quantity, 50)
+
+
+    def test_semi_finished_item_filter(self):
+
+        base_url ='/warehouse/semi-finisheditem/search/'
+        item = SemiFinishedItem.objects.create(name='Semi finished item', category=self.category,
+                                               price=12, quantity=20, producer='Producer')
+        item2 = SemiFinishedItem.objects.create(name='test item', category=self.category,
+                                               price=1, quantity=210, producer='Producer2')
+
+        self.response = self.client.get(base_url)
+
+        self.assertContains(self.response, 'Semi finished item')
+        self.assertContains(self.response, 'Category')
+        self.assertContains(self.response, 'test item')
+
+        self.response2 = self.client.get(base_url+'?name=test&producer=Producer&category=')
+        self.assertContains(self.response2, 'test item')
+        #self.assertNotContains(self.response2, 'Semi finished item')
+
+
+

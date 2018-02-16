@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block title %} Search item {% endblock %}
+
+{% block content %}
+<form method="get">
+<div class="well">
+    <h3>Search</h3>
+    <div class="row">
+        <div class="form-group col-sm-4 col-md-4">
+            {{ filter.form.name.label_tag }}
+            {% render_field filter.form.name class="form-control" %}
+        </div>
+        <div class="form-group col-sm-4 col-md-4">
+            {{ filter.form.producer.label_tag }}
+            {% render_field filter.form.producer class="form-control" %}
+        </div>
+        <div class="form-group col-sm-4 col-md-4">
+            {{ filter.form.category.label_tag }}
+            {% render_field filter.form.category class="form-control" %}
+        </div>
+    </div>
+        <p><input class="btn btn-primary" type="submit" value="Search"></p>
+</div>
+</form>
+
+<table class="table table-hover">
+    <tr>
+        <th>Name</th>
+        <th>Producer</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Category</th>
+        <th>Details</th>
+    </tr>
+    {% for item in filter.qs %}
+        <tr>
+            <td>{{ item.name }}</td>
+            <td>{{ item.producer }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.price }}</td>
+            <td>{{ item.category.name }}</td>
+            <td><input class="btn btn-success" type="button" value="details" onclick="location.href='{% url 'semi_finished_item_detail' item.slug %}'" ></td>
+        </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

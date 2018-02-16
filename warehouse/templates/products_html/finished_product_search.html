@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% block title %} Search Fisnihed Product {% endblock %}
+
+{% block content %}
+<form method="get">
+<div class="well">
+    <h3>Search</h3>
+    <div class="row">
+        <div class="form-group col-sm-4 com-md-3">
+            {{ filter.form.name.label_tag }}
+            {% render_field filter.form.name class="form-control" %}
+        </div>
+        <div class="form-group col-sm-4 col-md-3">
+            {{ filter.form.EAN_code.label_tag }}
+            {% render_field filter.form.EAN_code class="form-control" %}
+        </div>
+    </div>
+    <input class="btn btn-primary" type="submit" value="Search">
+</div>
+</form>
+
+<table class="table table-hover">
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>EAN_code</th>
+        <th>Details</th>
+    </tr>
+    {% for item in filter.qs %}
+    <tr>
+        <td>{{ item.name }}</td>
+        <td>{{ item.price }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>{{ item.EAN_code }}</td>
+        <td><input class="btn btn-success" type="button" value="Details"
+                   onclick="location.href='{% url 'finished_item_details' item.slug %}'"></td>
+    </tr>
+
+    {% endfor %}
+</table>
+{% endblock %}

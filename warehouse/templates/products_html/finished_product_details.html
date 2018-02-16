@@ -5,10 +5,10 @@ Finished Product details
 {% endblock %}
 
 {% block content %}
-    <h1> Item Details</h1>
-    {{ item.name }} <br>
-    {{ item.quantity }} <br>
-    {{ item.producer }} <br>
-    {{ item.EAN_code }} <br>
-    {{ item.get_edit_url }}
+    <h1> Finished Product Details</h1>
+    <h3> Name: {{ item.name }} <br>
+    Quantity: {{ item.quantity }} <br>
+    EAN_code: {{ item.EAN_code }} <br>
+    {{ item.get_edit_url }}</h3>
+
 {%  endblock %}

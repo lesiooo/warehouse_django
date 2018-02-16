@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import CreateFinishedProduct, CreateSemiFinishedItemForm, SemiFinishedItemEditForm, FinishedProductEditForm
 from django.contrib import messages
 from .models import SemiFinishedItem, FinishedProduct
-
+from .filters import SemiFinishedItemFilter, FinishedProductFilter
 
 def home_page(request):
     semi_finished_items = FinishedProduct.objects.all()
@@ -79,3 +79,13 @@ def finished_product_edit_view(request, slug):
     else:
         edit_product_form = FinishedProductEditForm(instance=item)
     return render(request, 'products_html/finished_product_edit.html', {'edit_product_form': edit_product_form})
+
+def search_semi_finished_item_view(request):
+    item_list = SemiFinishedItem.objects.all()
+    item_filter = SemiFinishedItemFilter(request.GET, queryset=item_list)
+    return render(request, 'products_html/semi_finished_item_search.html', {'filter':item_filter})
+
+def search_finished_product_view(request):
+    product_list = FinishedProduct.objects.all()
+    product_filter = FinishedProductFilter(request.GET, queryset=product_list)
+    return render(request, 'products_html/finished_product_search.html', {'filter': product_filter})
