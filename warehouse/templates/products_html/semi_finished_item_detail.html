@@ -6,8 +6,9 @@ Semi-finished Item detail
 
 {% block content %}
     <h1> Item Details</h1>
-    {{ item.name }} <br>
-    {{ item.quantity }} <br>
-    {{ item.producer }} <br>
-    {{ item.get_edit_url}}<br>
+    <h3>Name: {{ item.name }} <br>
+    Quantity: {{ item.quantity }} <br>
+    Producer: {{ item.producer }} <br>
+    Price: {{ item.price }}</h3>
+    <input class="btn btn-success" type="button" value="Edit" onclick="location.href='{% url 'semi_finished_item_edit' item.slug %}'">
 {%  endblock %}
