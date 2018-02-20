@@ -43,6 +43,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'warehouse',
+    'list_of_goods',
+    'operations',
 
 )
 
@@ -92,6 +94,9 @@ DATABASES = {
 
 LOGIN_REDIRECT_URL = reverse_lazy('home_page')
 LOGIN_URL = reverse_lazy('login')
+
+#session for temorary list of goods
+LIST_OF_GOODS_SESION_ID = 'list_of_goods'
 
 LANGUAGE_CODE = 'en-us'
 

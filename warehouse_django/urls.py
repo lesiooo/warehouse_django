@@ -23,4 +23,5 @@ urlpatterns = [
     url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^warehouse/', include('warehouse.urls')),
+    url(r'list-of-goods/', include('list_of_goods.urls')),
 ]
