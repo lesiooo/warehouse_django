@@ -42,6 +42,7 @@
             <td>{{ item.price }}</td>
             <td>{{ item.category.name }}</td>
             <td><input class="btn btn-success" type="button" value="details" onclick="location.href='{% url 'semi_finished_item_detail' item.slug %}'" ></td>
+
         </tr>
     {% endfor %}
 </table>

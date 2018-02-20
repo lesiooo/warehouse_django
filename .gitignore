@@ -2,3 +2,5 @@
 
 db.sqlite3
 warehouse/migrations/
+list_of_goods/migrations/
+operations/migrations/

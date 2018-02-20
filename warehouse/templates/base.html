@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load widget_tweaks %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +35,7 @@
             <li><a href="{% url "search finished product" %}">Search Finished product</a></li>
           </ul>
         </li>
-        <li><a href="#">Page 2</a></li>
+        <li><a href="{% url "list_of_goods_detail" %}">List of goods</a></li>
         <li><a href="#">Page 3</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">

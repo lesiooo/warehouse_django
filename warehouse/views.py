@@ -4,6 +4,7 @@ from .forms import CreateFinishedProduct, CreateSemiFinishedItemForm, SemiFinish
 from django.contrib import messages
 from .models import SemiFinishedItem, FinishedProduct
 from .filters import SemiFinishedItemFilter, FinishedProductFilter
+from list_of_goods.forms import AddItemToListGoodsForm
 
 def home_page(request):
     semi_finished_items = FinishedProduct.objects.all()
@@ -48,7 +49,9 @@ def create_finished_product_view(request):
 
 def semi_finished_item_detail(request, slug):
     item = SemiFinishedItem.objects.get(slug=slug)
-    return render(request, 'products_html/semi_finished_item_detail.html', {'item': item})
+    list_of_goods_item_form = AddItemToListGoodsForm()
+    return render(request, 'products_html/semi_finished_item_detail.html',
+                  {'item': item, 'add_item_form': list_of_goods_item_form})
 
 @login_required
 def semi_finished_item_edit_view(request, slug):
