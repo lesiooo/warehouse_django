@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %} Operation Success {% endblock %}
+
+{% block content %}
+<h1>{{ type_operation }} successfully</h1>
+
+<table class="table table-hover">
+    <tr>
+        <th width="30%">Name</th>
+        <th>Quantity</th>
+    </tr>
+        {% for item in list_of_goods %}
+            {% with item_form=item.item %}
+        <tr>
+            <td>{{ item_form.name }}</td>
+            <td>{{ item.quantity }}</td>
+        </tr>
+            {% endwith %}
+    {% endfor %}
+</table>
+      <p class="text-right">
+    <a href="{% url "search_semi_finished_item" %}" class="btn btn-primary"> Print operation document
+    </a>
+    </p>
+{% endblock %}

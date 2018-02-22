@@ -37,4 +37,13 @@
     <a href="{% url "search_semi_finished_item" %}" class="btn btn-primary" value="">Add another Items
     </a>
     </p>
+    <input type="submit" class="btn btn-primary"
+           value="Outbound delivery" onclick="location.href='{% url 'operation' 'OD' %}'">
+    <input type="submit" class="btn btn-primary"
+           value="External receipt" onclick="location.href='{% url 'operation' 'ER' %}'">
+    <input type="submit" class="btn btn-primary"
+           value="Internal receipt" onclick="location.href='{% url 'operation' 'IR' %}'">
+    <input type="submit" class="btn btn-primary"
+           value="Internal send" onclick="location.href='{% url 'operation' 'IS' %}'">
+
 {% endblock %}

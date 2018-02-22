@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %} Operation detail {% endblock %}
+
+{% block content %}
+    <h1>Operation {{ operation.operation_number }} detail</h1>
+
+    <h3>Date: {{ operation.created }}</h3>
+    <h3>Worehouse Worker: {{ operation.worker.get_full_name }}</h3>
+    <table class="table table-hover">
+    <tr>
+        <th>Item name</th>
+        <th>quantity</th>
+    </tr>
+    {% for item in operation_items %}
+        <tr>
+            <td>{{ item.item.name }}</td>
+            <td>{{ item.quantity }}</td>
+
+        </tr>
+
+    {% endfor %}
+    </table>
+{% endblock %}

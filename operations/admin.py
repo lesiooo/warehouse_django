@@ -6,7 +6,7 @@ class OperationItemInline(admin.TabularInline):
     raw_id_fields = ['item']
 
 class OperationAdmin(admin.ModelAdmin):
-    list_display = ['id', 'worker', 'created', 'operation']
+    list_display = ['id', 'worker', 'created', 'operation_number', 'operation']
     inlines = [OperationItemInline]
 
 admin.site.register(Operiation, OperationAdmin)
