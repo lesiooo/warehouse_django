@@ -1,0 +1,21 @@
+    <h1>Operation {{ operation.operation_number }} detail</h1>
+
+    <h2>Date: {{ operation.created }}</h2>
+    <h3>Worehouse Worker: {{ operation.worker.get_full_name }}</h3>
+    <table>
+    <tr>
+        <th width="10%"> No.</th>
+        <th width="65%">Item name</th>
+        <th width="25%">quantity</th>
+    </tr>
+    {% for item in operation_items %}
+        <tr>
+            <td> {{  forloop.counter }} </td>
+            <td>{{ item.item.name }}</td>
+            <td>{{ item.quantity }}</td>
+
+        </tr>
+
+    {% endfor %}
+    </table>
+    <h4> ______________________ <br> Worker sign  </h4>

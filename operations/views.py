@@ -1,5 +1,9 @@
+import weasyprint
+from django.conf import settings
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
+from django.template.loader import render_to_string
 from django.utils import timezone
 
 from list_of_goods.list_of_goods import ListGoods
@@ -43,3 +47,13 @@ def operation_detail_view(request, operation_number):
     operation = Operiation.objects.get(operation_number=str(operation_number))
     operation_items = OperationItem.objects.filter(operation=operation)
     return render(request, 'operations/operation_detail.html', {'operation': operation, 'operation_items': operation_items})
+
+
+def generate_pdf_operation(request, operation_number):
+    operation = Operiation.objects.get(operation_number=str(operation_number))
+    operation_items = OperationItem.objects.filter(operation=operation)
+    html = render_to_string('operations/operation_pdf.html', {'operation': operation, 'operation_items': operation_items})
+    response = HttpResponse(content_type='aplication/pdf')
+    response['Content-Disposition'] = 'filename="{}.pdf"'.format(operation.operation_number)
+    weasyprint.HTML(string=html).write_pdf(response, stylesheets=[weasyprint.CSS('operations/static/pdf_style.css')])
+    return response

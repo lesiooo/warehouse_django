@@ -21,4 +21,5 @@
 
     {% endfor %}
     </table>
+    <input type="button" class="btn btn-success" value="Generate PDF" onclick="location.href='{% url 'operation_pdf' operation.operation_number %}'">
 {% endblock %}
