@@ -5,12 +5,13 @@
 {% block content %}
 <h1>{{ type_operation }} successfully</h1>
 
+
 <table class="table table-hover">
     <tr>
         <th width="30%">Name</th>
         <th>Quantity</th>
     </tr>
-        {% for item in list_of_goods %}
+        {% for item in list_of_items %}
             {% with item_form=item.item %}
         <tr>
             <td>{{ item_form.name }}</td>

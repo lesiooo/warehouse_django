@@ -97,6 +97,7 @@ LOGIN_URL = reverse_lazy('login')
 
 #session for temorary list of goods
 LIST_OF_GOODS_SESION_ID = 'list_of_goods'
+LIST_OF_FINISHED_PRODUCTS_SESSION_ID = 'list_of_finished_products'
 
 LANGUAGE_CODE = 'en-us'
 

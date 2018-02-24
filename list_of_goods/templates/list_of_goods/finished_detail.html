@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %} List of goods {% endblock %}
+
+{% block content %}
+
+
+    {% if list_of_finished_product %}
+    <h1> List of finished product</h1>
+    <table> <tr>
+        <th width="30%">Name</th>
+        <th>Quantity</th>
+        <th width="20%">Remove</th>
+    </tr>
+        {% for item in list_of_finished_product %}
+            {% with item_form=item.item %}
+        <tr>
+            <td>{{ item_form.name }}</td>
+            <td>
+
+                <form class="form-inline" action="{% url "list_finished_product_add" item_form.id %}" method="post">
+                    {{ item.update_quantity_form.update }}
+                    {% render_field item.update_quantity_form.quantity class='form-control' %}
+
+                    <input class="btn btn-warning" type="submit" value="Change quantity">
+                    {% csrf_token %}
+                </form>
+            </td>
+            <td><input class="btn btn-danger" type="button" value="Remove" onclick="location.href='{% url 'list_finished_product_remove' item_form.id %}'" ></td>
+
+        </tr>
+            {% endwith %}
+    {% endfor %}
+    </table>
+        <input type="submit" class="btn btn-primary"
+           value="Internal receipt" onclick="location.href='{% url 'operation_finished_product' 'IR' %}'">
+        <input type="submit" class="btn btn-primary"
+           value="Outbound delivery" onclick="location.href='{% url 'operation_finished_product' 'OD' %}'">
+
+{% endif %}
+
+{% endblock %}

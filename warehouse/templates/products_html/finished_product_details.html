@@ -6,9 +6,42 @@ Finished Product details
 
 {% block content %}
     <h1> Finished Product Details</h1>
-    <h3> Name: {{ item.name }} <br>
-    Quantity: {{ item.quantity }} <br>
-    EAN_code: {{ item.EAN_code }} <br>
-    <input class="btn btn-success" type="button" value="Edit" onclick="location.href='{% url 'finished_item_edit' item.slug %}'"></h3>
+     <div class="form-group col-sm-6">
+        <h3> Name: {{ item.name }} <br>
+        Quantity: {{ item.quantity }} <br>
+        EAN_code: {{ item.EAN_code }} <br>
+        <input class="btn btn-success" type="button" value="Edit" onclick="location.href='{% url 'finished_item_edit' item.slug %}'"></h3>
+     </div>
+
+    <div class="form-group col-sm-6">
+        <h3>Add item to List of goods</h3>
+        <form action="{% url 'list_finished_product_add' item.id %}" method="post">
+            {{ add_item_form }}
+            {% csrf_token %}
+            <input class="btn btn-primary" type="submit" value="Add to List">
+        </form>
+    </div>
+
+    {% if operations %}
+    <div class="form-group col-sm-12 col-md-8">
+        <table class="table table-hover">
+            <tr>
+                <th>Date</th>
+                <th>Operation number</th>
+                <th>Quantity</th>
+                <th>Operation detail</th>
+            </tr>
+            {% for operation in operations %}
+                <tr>
+                    <td>{{ operation.operation.created }}</td>
+                    <td>{{ operation.operation.operation_number }}</td>
+                    <td>{{ operation.quantity }}</td>
+                    <td><input class="btn btn-success" type="button" value="Detail" onclick="location.href='{% url 'operation_detail' operation.operation.operation_number %}'"></td>
+                </tr>
+
+            {% endfor %}
+        </table>
+    </div>
+    {% endif %}
 
 {%  endblock %}

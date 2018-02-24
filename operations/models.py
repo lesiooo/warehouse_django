@@ -2,7 +2,7 @@ from django.core.urlresolvers import reverse
 from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
-from warehouse.models import SemiFinishedItem
+from warehouse.models import SemiFinishedItem, FinishedProduct
 from django.utils import timezone
 
 
@@ -32,4 +32,10 @@ class Operiation(models.Model):
 class OperationItem(models.Model):
     operation = models.ForeignKey(Operiation, related_name='operation_type')
     item = models.ForeignKey(SemiFinishedItem, related_name='operation_item')
+    quantity = models.DecimalField(max_digits=8, decimal_places=2)
+
+
+class OperationFinishedProduct(models.Model):
+    operation = models.ForeignKey(Operiation, related_name='operation_finished_type')
+    item = models.ForeignKey(FinishedProduct, related_name='operation_product')
     quantity = models.DecimalField(max_digits=8, decimal_places=2)

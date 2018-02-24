@@ -35,7 +35,14 @@
             <li><a href="{% url "search finished product" %}">Search Finished product</a></li>
           </ul>
         </li>
-        <li><a href="{% url "list_of_goods_detail" %}">List of goods</a></li>
+          <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Items for operation<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                  <li><a href="{% url "list_of_goods_detail" %}">List of semi-finished items</a></li>
+                  <li><a href="{% url "list_of_finished_product_detail" %}">List of finished products</a></li>
+              </ul>
+          </li>
+        <li><a href="{% url "list_of_goods_detail" %}">Localize items</a></li>
         <li><a href="#">Page 3</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">

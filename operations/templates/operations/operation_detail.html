@@ -12,14 +12,26 @@
         <th>Item name</th>
         <th>quantity</th>
     </tr>
+    {% if operation_items %}
     {% for item in operation_items %}
         <tr>
             <td>{{ item.item.name }}</td>
             <td>{{ item.quantity }}</td>
 
         </tr>
+        {% endfor %}
+    {% elif operation_finished_products %}
+        {% for item in operation_finished_products %}
+        <tr>
+            <td>{{ item.item.name }}</td>
+            <td>{{ item.quantity }}</td>
 
-    {% endfor %}
+        </tr>
+        {% endfor %}
+
+        {% endif %}
+
+
     </table>
     <input type="button" class="btn btn-success" value="Generate PDF" onclick="location.href='{% url 'operation_pdf' operation.operation_number %}'">
 {% endblock %}

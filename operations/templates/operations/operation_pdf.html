@@ -8,6 +8,7 @@
         <th width="65%">Item name</th>
         <th width="25%">quantity</th>
     </tr>
+    {% if operation_items %}
     {% for item in operation_items %}
         <tr>
             <td> {{  forloop.counter }} </td>
@@ -17,5 +18,17 @@
         </tr>
 
     {% endfor %}
+        {% endif %}
+    {% if operation_finished_products %}
+    {% for item in operation_finished_product %}
+        <tr>
+            <td> {{ forloop.counter }} </td>
+            <td>{{ item.item.name }}</td>
+            <td>{{ item.quantity }}</td>
+
+        </tr>
+
+    {% endfor %}
+    {% endif %}
     </table>
     <h4> ______________________ <br> Worker sign  </h4>
