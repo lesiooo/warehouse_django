@@ -24,4 +24,5 @@ h4 {
 table, th, td {
     font-size: 14px;
     border: solid black 1px;
+    width: 100%;
 }

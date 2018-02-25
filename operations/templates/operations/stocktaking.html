@@ -1,0 +1,38 @@
+<h1>Semi-finished items</h1>
+<table width="100%">
+    <tr>
+        <th width="35%">Item name</th>
+        <th width="15%">quantity</th>
+        <th width="50%">For real quantity</th>
+    </tr>
+    {% if semi_finished_items %}
+    {% for item in semi_finished_items %}
+        <tr>
+            <td>{{ item.name }}</td>
+            <td>{{ item.quantity }}</td>
+            <td> </td>
+
+        </tr>
+
+    {% endfor %}
+        {% endif %}
+</table>
+<h1>Finished products</h1>
+<table>
+    <tr>
+        <th>Item name</th>
+        <th>quantity</th>
+        <th >For real quantity</th>
+    </tr>
+    {% if finished_products %}
+    {% for item in finished_products %}
+        <tr>
+            <td>{{ item.name }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>                              </td>
+
+        </tr>
+
+    {% endfor %}
+    {% endif %}
+    </table>

@@ -43,7 +43,7 @@
               </ul>
           </li>
         <li><a href="{% url "list_of_goods_detail" %}">Localize items</a></li>
-        <li><a href="#">Page 3</a></li>
+        <li><a href="{% url "stocktaking" %}">Prepare stocstaking list</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
           {% if request.user.is_authenticated %}

@@ -87,3 +87,14 @@ def generate_pdf_operation(request, operation_number):
     response['Content-Disposition'] = 'filename="{}.pdf"'.format(operation.operation_number)
     weasyprint.HTML(string=html).write_pdf(response, stylesheets=[weasyprint.CSS('operations/static/pdf_style.css')])
     return response
+
+def generate_stocktaking_list_view(request):
+    semi_finished_items = SemiFinishedItem.objects.all().order_by('category__name').order_by('name')
+    finished_products = FinishedProduct.objects.all().order_by('name')
+
+    html = render_to_string('operations/stocktaking.html',
+                            {'semi_finished_items': semi_finished_items, 'finished_products': finished_products})
+    response = HttpResponse(content_type='aplication/pdf')
+    response['Content-Disposition'] = 'filename=stocktaking_{}.pdf'.format(timezone.now().date())
+    weasyprint.HTML(string=html).write_pdf(response, stylesheets=[weasyprint.CSS('operations/static/pdf_style.css')])
+    return response
