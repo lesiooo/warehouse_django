@@ -16,6 +16,9 @@ class SemiFinishedItem(models.Model):
     producer = models.CharField(max_length=50)
     price = models.FloatField()
 
+    def __str__(self):
+        return self.name
+
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
         super().save()
@@ -27,15 +30,15 @@ class SemiFinishedItem(models.Model):
         return reverse('semi_finished_item_detail', kwargs={'slug': self.slug,})
 
 
-
-
-
 class FinishedProduct(models.Model):
     name = models.CharField(max_length=255)
     slug = models.SlugField(blank=True)
     price = models.FloatField()
     quantity = models.PositiveIntegerField(default=0)
     EAN_code = models.CharField(max_length=13, default=0)
+
+    def __str__(self):
+        return self.name
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)

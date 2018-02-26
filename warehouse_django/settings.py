@@ -45,6 +45,7 @@ INSTALLED_APPS = (
     'warehouse',
     'list_of_goods',
     'operations',
+    'localization',
 
 )
 

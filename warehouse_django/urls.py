@@ -25,4 +25,5 @@ urlpatterns = [
     url(r'^warehouse/', include('warehouse.urls')),
     url(r'list-of-goods/', include('list_of_goods.urls')),
     url(r'^operations/', include('operations.urls')),
+    url(r'^localization/', include('localization.urls')),
 ]

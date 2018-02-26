@@ -6,6 +6,8 @@ from .models import SemiFinishedItem, FinishedProduct
 from .filters import SemiFinishedItemFilter, FinishedProductFilter
 from list_of_goods.forms import AddItemToListGoodsForm
 from operations.models import OperationItem, OperationFinishedProduct
+from localization.forms import LocalizationItemForm
+from localization.models import LocalizationItem
 
 def home_page(request):
     semi_finished_items = FinishedProduct.objects.all()
@@ -51,9 +53,13 @@ def create_finished_product_view(request):
 def semi_finished_item_detail(request, slug):
     item = SemiFinishedItem.objects.get(slug=slug)
     list_of_goods_item_form = AddItemToListGoodsForm()
+    add_localization_form = LocalizationItemForm()
+    localization_list = LocalizationItem.objects.filter(item=item).order_by('-date_of_placement')
     operations = OperationItem.objects.filter(item=item).order_by('-operation__created')
     return render(request, 'products_html/semi_finished_item_detail.html',
-                  {'item': item, 'add_item_form': list_of_goods_item_form, 'operations': operations})
+                  {'item': item, 'add_item_form': list_of_goods_item_form,
+                   'operations': operations,'add_localization_form': add_localization_form,
+                   'localization_list': localization_list})
 
 @login_required
 def semi_finished_item_edit_view(request, slug):
