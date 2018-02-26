@@ -1,7 +1,8 @@
 # Created by .ignore support plugin (hsz.mobi)
-
-db.sqlite3
+.idea/
 warehouse/migrations/
 list_of_goods/migrations/
 operations/migrations/
 localization/migrations/
+**/migrations/**
+/db.sqlite3
