@@ -7,6 +7,9 @@ from django.db import models
 class Category(models.Model):
     name = models.CharField(max_length=50)
 
+    def __str__(self):
+        return self.name
+
 
 class SemiFinishedItem(models.Model):
     name = models.CharField(max_length=255)
@@ -21,7 +24,7 @@ class SemiFinishedItem(models.Model):
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
-        super().save()
+        super(SemiFinishedItem, self).save(*args, **kwargs)
 
     def get_edit_url(self):
         return reverse('semi_finished_item_edit', kwargs={'slug': self.slug,})

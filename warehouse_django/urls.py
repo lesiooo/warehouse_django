@@ -14,16 +14,17 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from django.contrib.auth.views import login
+from django.contrib.auth.views import login, logout
 from warehouse.views import home_page
 
 urlpatterns = [
     url(r'^$', home_page, name='home_page'),
-    url(r'^login/$', 'django.contrib.auth.views.login', name='login'),
-    url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout'),
+    url(r'^login/$', login, name='login'),
+    url(r'^logout/$', logout, name='logout'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^warehouse/', include('warehouse.urls')),
     url(r'list-of-goods/', include('list_of_goods.urls')),
     url(r'^operations/', include('operations.urls')),
     url(r'^localization/', include('localization.urls')),
+    url(r'^api/semi-finished-item/', include('warehouse.api.urls', namespace='api-semi-item')),
 ]
