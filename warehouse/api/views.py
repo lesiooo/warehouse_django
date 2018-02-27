@@ -12,6 +12,9 @@ class SemiFinishedItemRUDView(generics.RetrieveUpdateDestroyAPIView):
     def get_queryset(self):
         return self.queryset
 
+    def get_serializer_context(self, *args, **kwargs):
+        return {'request': self.request}
+
 
 class SemiFinishedItemAPIView(mixins.CreateModelMixin, generics.ListAPIView):
 
@@ -24,3 +27,6 @@ class SemiFinishedItemAPIView(mixins.CreateModelMixin, generics.ListAPIView):
 
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+
+    def get_serializer_context(self, *args, **kwargs):
+        return {'request': self.request}

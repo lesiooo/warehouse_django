@@ -2,6 +2,7 @@ from django.core.urlresolvers import reverse
 from django.db.models import permalink
 from django.template.defaultfilters import slugify
 from django.db import models
+from rest_framework.reverse import reverse as api_reverse
 
 
 class Category(models.Model):
@@ -31,6 +32,9 @@ class SemiFinishedItem(models.Model):
 
     def get_absolute_url(self):
         return reverse('semi_finished_item_detail', kwargs={'slug': self.slug,})
+
+    def get_api_url(self, request=None):
+        return api_reverse('api-semi-item:semi-finished-item-rud', kwargs={'id': self.id}, request=request)
 
 
 class FinishedProduct(models.Model):
