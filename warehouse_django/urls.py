@@ -26,5 +26,5 @@ urlpatterns = [
     url(r'list-of-goods/', include('list_of_goods.urls')),
     url(r'^operations/', include('operations.urls')),
     url(r'^localization/', include('localization.urls')),
-    url(r'^api/semi-finished-item/', include('warehouse.api.urls', namespace='api-semi-item')),
+    url(r'^api/warehouse/', include('warehouse.api.urls', namespace='api-warehouse')),
 ]

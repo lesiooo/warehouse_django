@@ -34,7 +34,7 @@ class SemiFinishedItem(models.Model):
         return reverse('semi_finished_item_detail', kwargs={'slug': self.slug,})
 
     def get_api_url(self, request=None):
-        return api_reverse('api-semi-item:semi-finished-item-rud', kwargs={'id': self.id}, request=request)
+        return api_reverse('api-warehouse:semi-finished-item-rud', kwargs={'id': self.id}, request=request)
 
 
 class FinishedProduct(models.Model):
@@ -56,5 +56,8 @@ class FinishedProduct(models.Model):
 
     def get_absolute_url(self):
         return reverse('finished_item_details', kwargs={'slug': self.slug,})
+
+    def get_api_url(self, request=None):
+        return api_reverse('api-warehouse:finished-product-rud', kwargs={'id': self.id}, request=request)
 
 
