@@ -6,3 +6,5 @@ operations/migrations/
 localization/migrations/
 **/migrations/**
 /db.sqlite3
+/frontend/e2e
+/frontend/node_modules
