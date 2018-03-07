@@ -12,10 +12,13 @@ Class-based views
 Including another URLconf
     1. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
+from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.contrib.auth.views import login, logout
 from warehouse.views import home_page
+
+
 
 urlpatterns = [
     url(r'^$', home_page, name='home_page'),
@@ -28,3 +31,9 @@ urlpatterns = [
     url(r'^localization/', include('localization.urls')),
     url(r'^api/warehouse/', include('warehouse.api.urls', namespace='api-warehouse')),
 ]
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+        url(r'^__debug__/', include(debug_toolbar.urls)),
+    ] + urlpatterns

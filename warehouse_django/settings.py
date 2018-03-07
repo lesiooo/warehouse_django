@@ -47,6 +47,7 @@ INSTALLED_APPS = (
     'operations',
     'localization',
     'rest_framework',
+    'debug_toolbar',
 
 )
 
@@ -59,6 +60,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
 ROOT_URLCONF = 'warehouse_django.urls'
@@ -128,3 +130,7 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
 ),
 }
+
+INTERNAL_IPS =(
+    '127.0.0.1',
+)
